@@ -19,7 +19,6 @@ int main()
 
 ``
 ## (UVA100) The 3n + 1 problem :
-
 ``c
 // 方法一
 int cycleLength(int n){
