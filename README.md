@@ -14,12 +14,26 @@ int main()
 ## 大二 資料結構實務
 ## 第三周
 ## odd sum
-``c
-
-
-``
+```c
+#include <stdio.h>
+int main()
+{
+	int n,a,b;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d%d",&a,&b);
+		int sum=0;
+		for(int j=a;j<=b;j++){
+			if(j%2!=0){
+				sum+=j;
+			}
+		}
+		printf("Case %d: %d\n", i+1,sum);
+	}
+}
+```
 ## (UVA100) The 3n + 1 problem :
-``c
+```c
 // 方法一
 int cycleLength(int n){
 	int Length=1;
@@ -57,8 +71,8 @@ int main(void)
 		
 	}
 }
-``
-``c
+```
+```c
 //第二種方法(能成功)
 int cycleLength(int n){
 	int Length=1;
@@ -99,4 +113,4 @@ int main(void)
 		}
 	}
 }
-``
+```
