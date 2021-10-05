@@ -142,3 +142,62 @@ int main()
 	}
 }
 ```
+## 第四周
+## 第1題 11677 時鐘問題(計算睡了多少分鐘)
+```c
+#include <stdio.h>
+
+int main()
+{
+        int h1,m1,h2,m2;
+        while(scanf("%d %d %d %d",&h1,&m1,&h2,&m2)!=EOF){
+            if(h1==0 && m1==0 && h2==0 && m2==0) break;
+            int t1,t2,sleeptime;
+            t1 = h1*60+m1;
+            t2 = h2*60+m2;
+            if(t2-t1<0){
+                sleeptime = t2+24*60-t1;
+            }
+            else{
+                sleeptime = t2-t1;
+            }
+            printf("%d\n",sleeptime);
+        }
+}
+
+```
+## 第2題 UVA10929：You can say 11 
+```c
+
+```
+## 第3題 UVA10071：Back to High School Physics 
+```c
+#include <stdio.h>
+int main()
+{
+	int v,t;
+	while(scanf("%d%d",&v,&t)!=EOF){
+		printf("%d\n",2*v*t);
+	}	
+}
+```
+## 第4題 UVA10055：Hashmat the brave warrior 
+```c
+#include <stdio.h>
+int main()
+{
+	long long a,b,temp;
+	while(scanf("%lld%lld",&a,&b)!=EOF){
+		if(a>b){
+			temp=a;
+			a=b;
+			b=temp;
+		}
+		printf("%lld\n",b-a);
+	}
+}
+```
+## 第5題 UVA10035：Primary Arithmetic 
+```c
+
+```
