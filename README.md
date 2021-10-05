@@ -168,7 +168,34 @@ int main()
 ```
 ## 第2題 UVA10929：You can say 11 
 ```c
-
+//暫存
+#include <stdlib.h>
+int main()
+{
+	char n[1000],temp;
+	int n1=0,n2=0,dp=0,dig;
+	while(scanf("%s",n)){
+		if(n==0) break;
+		temp=n;
+		while(n!=0){
+			dig=n%10;
+			if(dp%2==0) {
+				n2+=dig;
+			}
+			else{
+				n1+=dig;
+			}
+			dp++;
+			n/=10;
+		}
+			if(abs(n1-n2)%11==0){
+				printf("%s is a multiple of 11.\n",temp);
+			}
+			else{
+				printf("%s is not a multiple of 11.\n",temp);
+			}
+		}
+}
 ```
 ## 第3題 UVA10071：Back to High School Physics 
 ```c
@@ -198,6 +225,72 @@ int main()
 }
 ```
 ## 第5題 UVA10035：Primary Arithmetic 
+```c 
+//老師解法
+int main()
+{
+	int a,b;
+	while( scanf("%d %d",&a,&b)!=EOF ){
+		if( a==0 && b==0 )	break;
+		int a1,b1,n=0,carry=0;
+		a1=a%10;
+		b1=b%10;
+		while( !(a1==0 && b1==0) ){
+			int c=a1+b1+carry;
+			if(c>=10){
+				carry=1;
+				n++;
+			}
+			else{
+				carry=0;
+			}
+			a/=10;
+			b/=10;
+			a1=a%10;
+			b1=b%10;
+		}
+		if(n==0){
+			printf("No carry operation.\n");
+		}
+		else if(n==1){
+			printf("1 carry operation.\n");
+		}
+		else{
+			printf("%d carry operations.\n",n);
+		}
+	}
+	return 1;
+}
+```
 ```c
-
+\\均宜解法
+int main()
+{
+	while(1){
+		int a,b,n=0,carry=0;
+		scanf("%d %d",&a,&b);
+		if( a==0 && b==0 )	
+			break;
+		while( a+b ){    //當a+b=0時會停止
+			if(a%10+b%10+carry>=10){
+				carry=1;
+				n++;
+			}
+			else{
+				carry=0;
+			}
+			a/=10;
+			b/=10;
+		}
+		if(n==0){
+			printf("No carry operation.\n");
+		}
+		else if(n==1){
+			printf("1 carry operation.\n");
+		}
+		else{
+			printf("%d carry operations.\n",n);
+		}
+	}
+}
 ```
