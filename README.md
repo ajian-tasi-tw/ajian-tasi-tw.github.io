@@ -166,31 +166,7 @@ int main()
 }
 
 ```
-```c
-///字串寫法
-#include <stdio.h>
-int main()
-{
-	while(1){
-		char n[1001]={};
-		int a=0,b=0;
-		scanf("%s",n);
-		if(n[0]=='0') break;
-		for(int i=0;n[i];i+=2){
-			a+=n[i]-48;
-		}
-		for(int i=1;n[i];i+=2){
-			b+=n[i]-48;
-		}
-		if(abs(a-b)%11==0){
-			printf("%s is a multiple of 11.\n",n);
-		}
-		else{
-			printf("%s is not a multiple of 11.\n",n);
-		}
-	}
-}
-```
+
 ## 第2題 UVA10929：You can say 11 
 ```c
 //暫存
@@ -220,6 +196,31 @@ int main()
 				printf("%s is not a multiple of 11.\n",temp);
 			}
 		}
+}
+```
+```c
+///字串寫法
+#include <stdio.h>
+int main()
+{
+	while(1){
+		char n[1001]={};
+		int a=0,b=0;
+		scanf("%s",n);
+		if(n[0]=='0') break;
+		for(int i=0;n[i];i+=2){
+			a+=n[i]-48;
+		}
+		for(int i=1;n[i];i+=2){
+			b+=n[i]-48;
+		}
+		if(abs(a-b)%11==0){
+			printf("%s is a multiple of 11.\n",n);
+		}
+		else{
+			printf("%s is not a multiple of 11.\n",n);
+		}
+	}
 }
 ```
 ## 第3題 UVA10071：Back to High School Physics 
