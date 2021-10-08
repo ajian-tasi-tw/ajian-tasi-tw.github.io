@@ -13,7 +13,7 @@ int main()
 ```
 ## 大二 資料結構實務
 ## 第三周
-## odd sum
+## UVA10783 odd sum
 ```c
 #include <stdio.h>
 int main()
