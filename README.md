@@ -329,9 +329,9 @@ int main()
 {
 	int n,x,sum,a[10000];
 	while(scanf("%d",&x)!=EOF){
-		for(n=0; ;n++){
+		for(n=0; ;n++){  //不能有int
 			scanf("%d",&a[n]);
-			if(getchar()=='\n') break;
+			if(getchar()=='\n') break; //當讀到\n這個字元就停止
 		}
 		
 		sum=0;
@@ -345,5 +345,19 @@ int main()
 
 ## UVA10812：Beat the Spread!
 ```C
-
+#include <stdio.h>
+int main()
+{
+	int n,a,b;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d %d",&a,&b);
+		if(a<b || (a+b)%2==1){  //當a<b 和 答案是基數就不合
+			printf("impossible\n");
+		}
+		else{
+			printf("%d %d\n",(a+b)/2,(a-b)/2);
+		}
+	}
+}
 ```
