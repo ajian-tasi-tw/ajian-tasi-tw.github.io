@@ -320,3 +320,30 @@ int main()
 	}
 }
 ```
+## 第五周
+## UVA10268：498' 
+```c
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int n,x,sum,a[10000];
+	while(scanf("%d",&x)!=EOF){
+		for(n=0; ;n++){
+			scanf("%d",&a[n]);
+			if(getchar()=='\n') break;
+		}
+		
+		sum=0;
+		for(int i=0;i<n;i++){
+			sum=sum+a[i]*(n-i)*(int)pow(x,n-i-1);
+		}
+		printf("%d\n",sum);
+	}
+} 
+```
+
+## UVA10812：Beat the Spread!
+```C
+
+```
