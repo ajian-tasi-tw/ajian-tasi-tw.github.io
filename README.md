@@ -361,3 +361,86 @@ int main()
 	}
 }
 ```
+## 第六周
+## UVA11063：B2-Sequence 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,m=1,b[100];
+	while( scanf("%d",&n)!=EOF ){
+		for(int i=0;i<n;i++){
+			scanf("%d",&b[i]);
+		}
+		
+		int s[n*n/2],se=0,c=0;
+		
+		for(int i=0;i<n-1;i++){
+			if(b[i]>b[i+1]){
+				se=1;
+			}
+		}
+		
+		for(int i=0;i<n;i++){
+			for(int j=i;j<n;j++){
+				s[c]=b[i]+b[j];
+				c++;
+			}
+		}
+		for(int i=0;i<c;i++){
+			for(int j=i+1;j<c;j++){
+				if(s[i]==s[j])
+					se=1;
+			}
+		}
+		
+		if(se==1){
+			printf("Case #%d: It is not a B2-Sequence.\n",m);
+		}
+		else{
+			printf("Case #%d: It is a B2-Sequence.\n",m);
+		}
+		m++;
+		printf("\n");
+	}
+}
+```
+## UVA11764：Jumping Mario 
+```C
+#include <stdio.h>
+int b[100];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int k=1;k<=n;k++){
+		int a,up=0,down=0;
+		scanf("%d",&a);
+		for(int i=0;i<a;i++){
+			scanf("%d",&b[i]);
+		}
+		for(int i=0;i<a-1;i++){
+			if(b[i]<b[i+1]){
+				up++;
+			}
+			if(b[i]>b[i+1]){
+				down++;
+			}
+		}
+		printf("Case %d: %d %d\n",k,up,down);
+	}
+}
+```
+## UVA12019：Doom's Day Algorithm 
+```C
+
+```
+##
+```C
+
+```
+## 第七周
+## 
+```C
+
+```
