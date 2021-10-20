@@ -433,7 +433,44 @@ int main()
 ```
 ## UVA12019：Doom's Day Algorithm 
 ```C
-
+#include <stdio.h>
+char b[][20]={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+int mon[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+int tot[7]={1,94,157,220,253,285,365};
+int cal(int m,int n)
+{
+	int day=0;
+	for(int i=0;i<m-1;i++){
+		day+=mon[i];
+	}
+	day+=n;
+	return day;
+}
+int main(){
+	int n,m,d;
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d %d",&m,&d);
+		printf("%d %d\n",m,d);
+		int tday=cal(m,d);
+		printf("%d \n",tday);
+		int xday;
+		if(tday<tot[1]){
+			xday=tot[1]-tday;
+			xday=xday%7-7;
+			printf("%s\n",b[xday%7]);
+		}
+		else{
+			for(int k=2;k<=7;k++){
+				if(tday>tot[k] && tday<tot[k+1]){
+					xday=tday-tot[k];
+					xday=xday%7;
+					printf("%s\n",b[xday%7]);
+				}
+			}
+		}
+	}
+}
 ```
 ##
 ```C
