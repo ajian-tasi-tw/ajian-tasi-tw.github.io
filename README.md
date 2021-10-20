@@ -433,6 +433,7 @@ int main()
 ```
 ## UVA12019：Doom's Day Algorithm 
 ```C
+//老師作法我尚未理解@@
 #include <stdio.h>
 char b[][20]={"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 int mon[12]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -469,6 +470,24 @@ int main(){
 				}
 			}
 		}
+	}
+}
+```
+```c
+#include <stdio.h>
+char b[][20]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+int mon[13]={31,28,31,30,31,30,31,31,30,31,30,31};
+int main(){
+	int n,m,d;
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d %d",&m,&d);
+		int tday=0;	
+		for(int i=0;i<m-1;i++){
+			tday+=mon[i];
+		}
+		tday+=d;		
+		printf("%s\n",b[(tday+5)%7]);//因為這年是1月1號是禮拜六5+1日就是禮拜六，故要加5
 	}
 }
 ```
