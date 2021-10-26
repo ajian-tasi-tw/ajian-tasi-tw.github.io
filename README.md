@@ -496,7 +496,73 @@ int main(){
 
 ```
 ## 第七周
-## 
+## UVA10008：What's Cryptanalysis? 
+```C
+
+```
+## UVA10221：Satellites 
+```C
+
+```
+## UVA10929：You can say 11
+```C
+
+```
+## UVA11332：Summing Digits
+```C
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char n[10]; //因為是2,000,000,000所以是10格
+	
+	scanf("%s",n);
+	while( strcmp(n,"0")!=0 ){ //輸入的N和"0"，比較如果一樣會輸出0，如果不是0就繼續運算。
+		while(1){
+			int sum=0;
+			for(int i=0;i<strlen(n);i++){ //Strlen是來查字串長度
+				sum+=n[i]-'0'; //因為用字串來表示，所以要-'0'才行(ASCII碼)
+			}
+			if(sum<10){
+				printf("%d\n",sum); 
+				break;
+			}
+			char s[10];
+			sprintf(s,"%d",sum);//把值丟到S陣列裡
+			strcpy(n,s);//將S陣列複製到n陣列
+		}
+		scanf("%s",n);
+	}
+}
+```
+## UVA1225：Digit Counting 
+```C
+
+```
+## UVA272：TeX Quotes 
+```C
+#include <stdio.h>
+int main()
+{
+	char a;
+	int i=1;
+	while( (a=getchar())!=EOF ){
+		if( a=='"'){
+			if(i==1){
+				printf("``");
+			}
+			else{
+				printf("''");
+			}
+			i=!i;
+		}
+		else{
+			printf("%c",a);
+		}
+	}
+}
+```
+##
 ```C
 
 ```
