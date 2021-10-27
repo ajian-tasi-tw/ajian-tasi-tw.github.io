@@ -498,7 +498,38 @@ int main(){
 ## 第七周
 ## UVA10008：What's Cryptanalysis? 
 ```C
+#include <stdio.h>
+#include <string.h>
 
+int main()
+{
+	int n,alphabet[26]={0};
+	char a[100];
+	scanf("%d ",&n);
+	for(int k=0;k<n;k++){
+		fgets( a , 100 ,stdin);//能將一串輸入，並包括空格，stdin是讀到換行為止。
+		for(int i=0;i<strlen(a);i++){
+			if(a[i]>='a' && a[i]<='z'){
+				a[i]-=32;   //將小寫轉換成大寫
+			} 
+			if(a[i]>='A' && a[i]<='Z'){
+				alphabet[a[i]-'A']++; //剪掉大A後會依序放入格子裡;
+			}
+		}	
+	}
+	for(int i=0;i<26;i++){
+		int max=0;
+		for(int k=0;k<26;k++){
+			if(alphabet[k]>alphabet[max]){ //當數字大於MAX就交換
+				max=k;
+			}
+		}
+		if(alphabet[max]!=0){  //如果是0就不輸出
+			printf("%c %d\n",max+'A',alphabet[max]);
+		}
+		alphabet[max]=0;
+	}
+}
 ```
 ## UVA10221：Satellites 
 ```C
