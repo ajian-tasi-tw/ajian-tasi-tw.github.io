@@ -533,11 +533,48 @@ int main()
 ```
 ## UVA10221：Satellites 
 ```C
-
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	double s,a,PI=3.14159265358;
+	char b[4];
+	while(scanf("%lf %lf %s",&s,&a,b)!=EOF)
+	{
+		s+=6440;
+		if(b[0]=='m'){
+			a/=60;
+		}
+		printf("%lf %lf\n",2*s*PI*(a/360),2*s*sin(a*PI/180/2));
+	}
+}
 ```
 ## UVA10929：You can say 11
 ```C
-
+#include <stdio.h>
+int main()
+{
+	while(1){
+		char a[1001]={};
+		int b=0,c=0;
+		scanf("%s",a);
+		if(a[0]=='0'){
+			break;
+		}
+		for(int i=0;a[i];i+=2){
+			b+=a[i]-'0';
+		}
+		for(int i=1;a[i];i+=2){
+			c+=a[i]-'0';
+		}
+		if((b-c)%11==0){
+			printf("%s is a multiple of 11.\n",a);
+		}
+		else{
+			printf("%s is not a multiple of 11.\n",a);
+		}
+	}
+}
 ```
 ## UVA11332：Summing Digits
 ```C
@@ -566,9 +603,56 @@ int main()
 	}
 }
 ```
+```c
+#include <stdio.h>
+int main()
+{
+	while(1){
+		int n,sum=0;
+		scanf("%d",&n);
+		if(n==0){
+			break;
+		}
+		while(n){
+			sum+=n%10;
+			n/=10;
+			if(n==0 && sum>=10){
+				n=sum;
+				sum=0;
+			}
+		}
+		printf("%d\n",sum);
+	}
+}
+```
 ## UVA1225：Digit Counting 
 ```C
-
+#include <stdio.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	while(n--){
+		int b,a[10]={},c;
+		scanf("%d",&b);
+		for(int i=1;i<=b;i++){
+			if(i<10){
+				a[i]++;
+			}
+			else{
+				c=i;
+				while(c){
+					a[c%10]++;
+					c/=10;
+				}
+			}
+		}
+		for(int i=0;i<9;i++){
+			printf("%d ",a[i]);
+		}
+		printf("%d\n",a[9]);
+	}
+}
 ```
 ## UVA272：TeX Quotes 
 ```C
