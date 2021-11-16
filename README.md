@@ -677,7 +677,45 @@ int main()
 	}
 }
 ```
-##
+## 第10周
+## UVA10222：Decode the Mad man 
+```C
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char key[4][12]={
+	"`1234567890-=",
+	"qwertyuiop[]\",
+	"asdfghjkl;'",
+	"zxcvbnm,./"};
+	char a[20];
+	fgets(a,sizeof(a),stdin);
+	for(int i=0;i<strlen(a);i++){
+		if(a==" "){
+			printf("%c",a);
+		}
+		else{
+			for(int j=0;j<4;j++){		
+				for(int m=0;m<strlen(key[j]);m++){
+					if(a[m]>61 && a[m]<91){
+						a[m]+=32;
+					}
+					if(a[m]==key[j][m]){
+						printf("%c",key[j][m-2]);
+					}
+				}
+			}
+		}
+		printf("\n");
+	}
+}
+```
+## UVA10409：Die Game 
+```C
+
+```
+## UVA10415：Eb Alto Saxophone Player   
 ```C
 
 ```
