@@ -684,36 +684,74 @@ int main()
 #include <string.h>
 int main()
 {
-	char key[4][12]={
-	"`1234567890-=",
-	"qwertyuiop[]\",
-	"asdfghjkl;'",
-	"zxcvbnm,./"};
-	char a[20];
-	fgets(a,sizeof(a),stdin);
-	for(int i=0;i<strlen(a);i++){
-		if(a==" "){
+	char o[4][15]={
+	{"`1234567890-="},
+	{"qwertyuiop[]|"},
+	{"asdfghjkl;'"},
+	{"zxcvbnm,./"}
+	};
+	char a; //一個字一個字讀
+	while(scanf("%c",&a)!=EOF){
+		if(a==' ' || a=='\n'){ //跳行在這裡讀
 			printf("%c",a);
 		}
 		else{
-			for(int j=0;j<4;j++){		
-				for(int m=0;m<strlen(key[j]);m++){
-					if(a[m]>61 && a[m]<91){
-						a[m]+=32;
+			for(int j=0;j<4;j++){
+				for(int m=0;m<strlen(o[j]);m++){
+					if(a>'A' && a<'Z'){
+						a+=32;
 					}
-					if(a[m]==key[j][m]){
-						printf("%c",key[j][m-2]);
+					if(a==o[j][m]){ 
+						printf("%c",o[j][m-2]);
 					}
 				}
 			}
 		}
-		printf("\n");
 	}
 }
 ```
 ## UVA10409：Die Game 
 ```C
-
+#include <stdio.h>
+int main()
+{							  
+	while(1){
+		int n,die[6]={1,2,3,4,5,6}; //t,n,w,e,s,b //數字要重置放迴圈裡面
+		char a[6];
+		scanf("%d",&n);
+		if( n==0 ) break;
+		else{
+			for(int i=0;i<n;i++){
+				scanf("%s",a);
+				if( a[0]=='n' ){ //找一個字這樣寫 要讀整串的要用strcmp比較
+					die[1]=die[0]; //n
+					die[0]=die[4]; //t
+					die[5]=7-die[0];//d
+					die[4]=7-die[1];//s
+				}
+				if( a[0]=='s' ){
+					die[4]=die[0];
+					die[0]=die[1];
+					die[5]=7-die[0];
+					die[1]=7-die[4];
+				}
+				if( a[0]=='e' ){
+					die[3]=die[0];
+					die[0]=die[2];
+					die[5]=7-die[0];
+					die[2]=7-die[3];
+				}
+				if( a[0]=='w' ){
+					die[2]=die[0];
+					die[0]=die[3];
+					die[5]=7-die[0];
+					die[3]=7-die[2];
+				}
+			}
+			printf("%d\n",die[0]);
+		}
+	}
+}
 ```
 ## UVA10415：Eb Alto Saxophone Player   
 ```C
@@ -721,58 +759,162 @@ int main()
 #include <string.h>
 int main()
 {
-	char o[14][11]={
-		{99,0,1,1,1,0,0,1,1,1,1},
-		{100,0,1,1,1,0,0,1,1,1,0},
-		{101,0,1,1,1,0,0,1,1,0,0},
-		{102,0,1,1,1,0,0,1,0,0,0},
-		{103,0,1,1,1,0,0,0,0,0,0},
-		{97,0,1,1,0,0,0,0,0,0,0},
-		{98,0,1,0,0,0,0,0,0,0,0},
-		{67,0,0,1,0,0,0,0,0,0,0},
-		{68,1,1,1,1,0,0,1,1,1,0},
-		{69,1,1,1,1,0,0,1,1,0,0},
-		{70,1,1,1,1,0,0,1,0,0,0},
-		{71,1,1,1,1,0,0,0,0,0,0},
-		{65,1,1,1,0,0,0,0,0,0,0},
-		{66,1,1,0,0,0,0,0,0,0,0}
+	char o[14][12]={
+		{"c0111001111"},
+		{"d0111001110"},
+		{"e0111001100"},
+		{"f0111001000"},
+		{"g0111000000"},
+		{"a0110000000"},
+		{"b0100000000"},
+		{"C0010000000"},
+		{"D1111001110"},
+		{"E1111001100"},
+		{"F1111001000"},
+		{"G1111000000"},
+		{"A1110000000"},
+		{"B1100000000"},
 	};
-	
-	int count[10]={0,0,0,0,0,0,0,0,0,0};
-	int in[10]={0,0,0,0,0,0,0,0,0,0};
-	int pri[10];
-	int cur[10];
 	int n;
-	char a[201];
-	scanf("%d",&n);
-	for(int i=0;i<n;i++){
-		for(int d=0;d<10;d++){
-			pri[d]=in[d];
-		}
-	
+	scanf("%d\n",&n);
+	while(n--){
+		int count[10]={};
+		char a[201],pre[11]="0000000000";
 		fgets(a,sizeof(a),stdin);
-		for(int k=0;k<strlen(a);k++){
-			for(int j=0;j<14;j++){
-				if(o[j][0]==a[k]){
-					for(int b=0;b<10;b++){
-						cur[b]=o[j][b+1];
-					}
-				
+		for(int i=0;i<strlen(a);i++){
+			for(int k=0;k<14;k++){
+				if(a[i]==o[k][0]){
 					for(int m=0;m<10;m++){
-						if(cur[m]-pri[m]==1)
-						count[m]++;
-					}
-					for(int b=0;b<10;b++){
-						pri[b]=cur[b];
+						if(o[k][m+1]-pre[m]==1){
+							count[m]++;
+						}
+						pre[m]=o[k][m+1];
 					}
 				}
 			}
 		}
-		for(int m=0;m<10;m++){
-			printf("%d ",count[m]);
+		for(int i=0;i<9;i++){
+			printf("%d ",count[i]);
 		}
-		printf("\n");
+		printf("%d\n",count[9]);
 	}
-	
+}
+
+```
+## 補課
+## 氣泡排序
+```C
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a[100000],n=10000,r,temp;
+    ///亂數取值===========================================
+    for(int i=0;i<n;i++)
+    {
+        a[i]=i+1;
+    }
+    for(int i=0;i<n;i++)
+    {
+        r=rand()%n;
+        temp=a[i];
+        a[i]=a[r];
+        a[r]=temp;
+    }
+    ///氣泡排序============================================
+    int comp=0,s=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(a[j]>a[j+1]){
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+                s++;
+            }
+            comp++;
+        }
+    }
+    printf("使用氣泡排序法，比較了%d次，交換了%d次\n",comp,s);
+}
+
+```
+## 插入
+```C
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a[100000]={7,3,4,1,2,5,6},n=7,r,temp;
+    ///亂數取值===========================================
+   /* for(int i=0;i<n;i++)
+    {
+        a[i]=i+1;
+    }
+    for(int i=0;i<n;i++)
+    {
+        r=rand()%n;
+        temp=a[i];
+        a[i]=a[r];
+        a[r]=temp;
+    }
+*/
+    ///插入排序法==============================================
+    int comp2=0,s2=0,key;
+
+    for(int i=1;i<n;i++){
+        key=a[i];
+        int j=i-1;
+        while(j>=0 && a[j]>key){
+                a[j+1]=a[j];
+                j--;
+
+        }
+        a[j+1]=key;
+    }
+    printf("使用插入排序法，比較了%d次，交換了%d次\n",comp2,s2);
+    printf("結果=");
+    for(int i=0;i<n;i++){
+        printf("%d",a[i]);
+    }
+}
+```
+##選擇
+```C
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int a[100000]={7,3,4,1,2,5,6},n=7,r,temp;
+    ///亂數取值===========================================
+    /*for(int i=0;i<n;i++)
+    {
+        a[i]=i+1;
+    }
+    for(int i=0;i<n;i++)
+    {
+        r=rand()%n;
+        temp=a[i];
+        a[i]=a[r];
+        a[r]=temp;
+    }*/
+    ///選擇排序法=============================================
+    int comp3=0,s3=0;
+    for(int i=0;i<n-1;i++){
+        int mini=i;
+        for(int j=i+1;j<n;j++){
+            if(a[j]<a[mini])
+                mini=j;
+                //s3++;
+            temp=a[mini];
+            a[mini]=a[i];
+            a[i]=temp;
+            //comp3++;
+        }
+    }
+    printf("使用選擇排序法比較了%d次 交換了%d次\n",comp3,s3);
+    printf("結果=");
+     for(int i=0;i<n;i++){
+        printf("%d",a[i]);
+    }
 }
 ```
