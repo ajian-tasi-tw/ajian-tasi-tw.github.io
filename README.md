@@ -918,3 +918,42 @@ int main()
     }
 }
 ```
+## 第11週
+## UVA10041：Vito'sfamily 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int n,m;
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d",&m);
+		int a[m],temp,mid=0,ans=0;
+		for(int i=0;i<m;i++){
+			scanf("%d",&a[i]);
+		}
+		
+		for(int i=0;i<m;i++){
+			for(int j=0;j<m-i-1;j++){
+				if(a[j]>a[j+1]){
+					temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;
+				}
+			}
+		}
+		
+		if(m%2==0){
+			mid=(a[m/2-1]+a[m/2])/2;
+		}
+		else{
+			mid=a[(m+1)/2-1];
+		}
+		for(int i=0;i<m;i++){
+			ans+=abs(a[i]-mid);
+		}
+		printf("%d\n",ans);
+	}
+}
+```
