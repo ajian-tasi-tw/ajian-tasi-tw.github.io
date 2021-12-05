@@ -957,3 +957,163 @@ int main()
 	}
 }
 ```
+## 第13周
+## UVA10062：Tell me the frequencies!
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+struct data{
+	char m;
+	int n;
+}asc[100];
+int cmp(const void *a,const void *b)
+{
+	if((*(struct data *)b).n -(*(struct data *)a).n)//ex:2=2 
+		return (*(struct data *)b).n -(*(struct data *)a).n;
+	else   //n等於的時候，去比m
+		return (*(struct data *)a).m -(*(struct data *)b).m;
+}
+int main()
+{
+	char a[1000];
+	
+	for(int c=0;gets(a);c++)
+	{
+		int count[95]={0},n=0,k=0;
+		if(c)
+			printf("\n");
+		for(int i=0;i<strlen(a);i++){
+			count[a[i]-32]++;
+		}
+		for(int j=0;j<95;j++){
+			if(count[j]>0)
+				n++;
+		}
+		for(int i=0;i<95;i++){
+			if(count[i]>0){
+				asc[k].m=i+32;
+				asc[k].n=count[i];
+				k++;
+			}
+		}
+		qsort(asc,n,sizeof(asc[1]),cmp);
+		
+		int maxidx=0;
+		for(int j=0;j<n;j++){
+			for(int i=0;i<n;i++){
+				int max=0;
+				if(asc[i].n >max){
+					max =asc[i].n;
+					maxidx =i;
+				}
+			}
+			printf("%d %d\n",asc[maxidx].m,asc[maxidx].n);
+			asc[maxidx].n=0;
+		}
+	}
+}
+```
+
+## UVA10420：List of Conquests 
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+struct data{
+	char name[75];
+	int c;
+};
+int cmp(const void *a,const void *b){
+	return strcmp((*(struct data*)a).name ,(*(struct data *)b).name);	
+}
+
+int main()
+{
+	struct data girl[2000];
+	for(int i=0;i<2000;i++){//清空字串陣列跟數字陣列
+		strcpy(girl[i].name,"");
+		girl[i].c=0;
+	}
+	
+	int n,x=0;
+	char country[75],w[75];
+	scanf("%d",&n);
+	getchar(); //避免\n讀近來
+	
+	while(n--){
+		scanf("%s",country);
+		gets(w);
+		if(x==0){   //一開始先把一個國家放進去並++
+			strcpy(girl[x].name,country);
+			girl[x].c++;
+			x++;
+		}
+		else{    //剩下的去判斷陣列裡面有沒有那個國家了，如果沒有就再放進去，有的話就++
+			int inlist=0;
+			for(int i=0;i<x;i++){
+				if(strcmp(girl[i].name,country)==0){
+					girl[i].c++;
+					inlist=1;
+					break;
+				}
+			}
+			if(inlist==0){
+				strcpy(girl[x].name,country);
+				girl[x].c++;
+				x++;
+			}
+		}
+	}
+	
+	qsort(girl,x,sizeof(girl[1]),cmp); 
+	
+	for(int i=0;i<x;i++){
+		printf("%s %d\n",girl[i].name,girl[i].c); 
+	}
+}
+```
+## UVA11321：Sort! Sort!! and Sort!!! 
+```c
+#include <stdio.h>
+int a[10000];
+int swap( int i, int j)
+{
+	int temp=a[i];
+	a[i]=a[j];
+	a[j]=temp;
+ 	return a[i],a[j];
+}
+int main()
+{
+	int n,m;
+	while( scanf("%d%d",&n,&m)==2 ){
+		for(int i=0;i<n;i++){
+			scanf("%d",&a[i]);
+		}
+		for(int i=0;i<n;i++){
+			for(int j=i+1;j<n;j++){
+				if(a[i]%m>a[j]%m){ //排餘數順序
+					swap(i,j);
+				}
+				else if( a[i]%m==a[j]%m ){//餘數相同時。
+					if( a[i]%2==0 && a[j]%2!=0 ){//奇數偶數交換
+						swap(i,j);
+					}
+					else if( a[i]%2!=0 && a[j]%2!=0 && a[i]<a[j]){ //奇數排序，大到小
+						swap(i,j);
+					}
+					else if( a[i]%2==0 && a[j]%2==0 && a[i]>a[j]){ //偶數排序，小到大
+						swap(i,j);
+					}					
+				}
+			}
+		}	
+		printf("%d %d\n",n,m);
+		for(int i=0;i<n;i++){
+			printf("%d\n",a[i]);
+		}
+	
+	}
+}
+```
