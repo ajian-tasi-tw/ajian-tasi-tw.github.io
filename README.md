@@ -692,17 +692,17 @@ int main()
 	};
 	char a; //一個字一個字讀
 	while(scanf("%c",&a)!=EOF){
-		if(a==' ' || a=='\n'){ //跳行在這裡讀
+		if(a==' ' || a=='\n'){ //跳行在這裡讀跟印，單引號
 			printf("%c",a);
 		}
 		else{
-			for(int j=0;j<4;j++){
-				for(int m=0;m<strlen(o[j]);m++){
-					if(a>'A' && a<'Z'){
+			for(int j=0;j<4;j++){   //第一排鍵盤
+				for(int m=0;m<strlen(o[j]);m++){  //那一排鍵盤照順序測
+					if(a>'A' && a<'Z'){  //大寫轉小寫
 						a+=32;
 					}
 					if(a==o[j][m]){ 
-						printf("%c",o[j][m-2]);
+						printf("%c",o[j][m-2]);   //印出來
 					}
 				}
 			}
@@ -717,12 +717,12 @@ int main()
 {							  
 	while(1){
 		int n,die[6]={1,2,3,4,5,6}; //t,n,w,e,s,b //數字要重置放迴圈裡面
-		char a[6];
+		char a[6];  //因為東南西北的英文有6個字母
 		scanf("%d",&n);
 		if( n==0 ) break;
 		else{
 			for(int i=0;i<n;i++){
-				scanf("%s",a);
+				scanf("%s",a); //讀字串
 				if( a[0]=='n' ){ //找一個字這樣寫 要讀整串的要用strcmp比較
 					die[1]=die[0]; //n
 					die[0]=die[4]; //t
@@ -776,16 +776,16 @@ int main()
 		{"B1100000000"},
 	};
 	int n;
-	scanf("%d\n",&n);
+	scanf("%d\n",&n); //要多讀取一個\n 才不會錯
 	while(n--){
 		int count[10]={};
-		char a[201],pre[11]="0000000000";
-		fgets(a,sizeof(a),stdin);
-		for(int i=0;i<strlen(a);i++){
+		char a[201],pre[11]="0000000000"; //記得pre寫法
+		fgets(a,sizeof(a),stdin);  //讀取a整串文字
+		for(int i=0;i<strlen(a);i++){ 
 			for(int k=0;k<14;k++){
-				if(a[i]==o[k][0]){
+				if(a[i]==o[k][0]){ //查看字母是否一樣
 					for(int m=0;m<10;m++){
-						if(o[k][m+1]-pre[m]==1){
+						if(o[k][m+1]-pre[m]==1){  //如果放開就++
 							count[m]++;
 						}
 						pre[m]=o[k][m+1];
@@ -957,7 +957,7 @@ int main()
 	}
 }
 ```
-## 第13周
+## 第12周
 ## UVA10062：Tell me the frequencies!
 ```c
 #include <stdio.h>
