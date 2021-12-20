@@ -1155,3 +1155,109 @@ int main()
 	}
 }
 ```
+## 第13周
+## UVA10107:What is the Median?
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int cmp(const void *a,const void *b)
+{
+	return *(int *)a-*(int *)b;
+}
+int main()
+{
+	int a[1000]={0},mid=0,n;
+	while(scanf("%d",&a[n])!=EOF){
+		if(n==0){
+			mid=a[0];
+		}
+		else{
+			qsort(a,n+1,sizeof(int),cmp);
+			if((n+1)%2==0){
+				mid=(a[(n+1)/2-1]+a[(n+1)/2])/2;
+			}
+			else{
+				mid=a[(n+2)/2-1];
+			}
+		}
+		printf("%d\n",mid);
+		n++;
+	}
+}
+```
+
+## 第14周
+## UVA10056：What is the Probability?
+```c
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		int a,b;
+		double p,q,s1,r;
+		scanf("%d %lf %d",&a,&p,&b);
+		q=1-p;
+		r=pow(q,a);
+		s1=pow(q,(b-1))*p;
+		if(p==0){
+			printf("%.4lf\n",0);
+		}
+		else{
+			printf("%.4lf\n",s1/(1-r));
+		}
+	}
+}
+```
+## UVA10193：All You Need Is Love 
+```c
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int GCD( int e,int f)
+{
+	int r;
+	if(e<f){
+		int temp=e;
+		e=f;
+		f=temp;
+	}
+	r=e%f;//餘數
+	while(r!=0){
+		e=f;
+		f=r;
+		r=e%f;
+	}
+	return f;
+}
+int main()
+{
+	int n,t;
+	scanf("%d",&n);
+	t=n;
+	while(n--){
+		char a[30],b[30];
+		scanf("%s %s",a,b);
+		long int e=0,f=0,gcd;
+		for(int i=0;i<strlen(a);i++){
+			e+=(a[i]-48)*(int)pow(2,strlen(a)-1-i);
+		}
+		for(int i=0;i<strlen(b);i++){
+			f+=(b[i]-48)*(int)pow(2,strlen(b)-1-i);
+		}
+		gcd=GCD(e,f);
+		if(gcd>1){
+			printf("Pair #%d: All you need is love!\n",t-n);
+		}
+		else{
+			printf("Pair #%d: Love is not all you need!\n",t-n);
+		}
+	}
+}
+```
+## UVA11349：Symmetric Matrix 
+```c
+
+```
