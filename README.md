@@ -1238,14 +1238,50 @@ int main()
 	scanf("%d",&n);
 	t=n;
 	while(n--){
-		char a[30],b[30];
+		char a[31],b[31];
 		scanf("%s %s",a,b);
 		long int e=0,f=0,gcd;
 		for(int i=0;i<strlen(a);i++){
-			e+=(a[i]-48)*(int)pow(2,strlen(a)-1-i);
+			e+=(a[i]-48)*(int)pow(2,strlen(a)-1-i);//轉成十進位
 		}
 		for(int i=0;i<strlen(b);i++){
 			f+=(b[i]-48)*(int)pow(2,strlen(b)-1-i);
+		}
+		gcd=GCD(e,f);
+		if(gcd>1){
+			printf("Pair #%d: All you need is love!\n",t-n);
+		}
+		else{
+			printf("Pair #%d: Love is not all you need!\n",t-n);
+		}
+	}
+}
+```
+```c
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int GCD( int e,int f)
+{	
+	if(e%f==0){
+		return f;
+	}
+	return GCD(f,e%f);
+}
+int main()
+{
+	int n,t;
+	scanf("%d",&n);
+	t=n;
+	while(n--){
+		char a[31],b[31];
+		scanf("%s%s",a,b);
+		long int e=0,f=0,gcd;
+		for(int i=0;i<strlen(a);i++){
+			e=e*2+(a[i]-48);//轉成十進位
+		}
+		for(int i=0;i<strlen(b);i++){
+			f=f*2+(b[i]-48);
 		}
 		gcd=GCD(e,f);
 		if(gcd>1){
