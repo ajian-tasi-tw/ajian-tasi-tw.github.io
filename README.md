@@ -1297,3 +1297,63 @@ int main()
 ```c
 
 ```
+## 第14周
+## UVA10190：Divide, But Not Quite Conquer
+```c
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int n,m;
+	while(scanf("%d %d",&n,&m)!=EOF){
+		int i=1;
+		if(m!=1){
+			while((int)pow(m,i) <=n ){
+				i++;  //去看陣列的大小
+			}
+			
+			int a[i];
+			for(int k=0;k<i;k++){
+				a[k]=0;
+			}
+			
+			int j=0;
+			a[j]=n;
+			
+			while(n%m==0){
+				n=n/m;
+				j++;
+				a[j]=n;
+			}
+			
+			if(a[i-1]==1){
+				printf("%d",a[0]);
+				for(int j=1;j<i;j++) printf(" %d", a[j]);
+				printf("\n");
+			}
+			else{
+				printf("Boring!\n");
+			}
+		}
+		else{
+			printf("Boring!\n");
+		}
+	}
+}
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
