@@ -1345,9 +1345,51 @@ int main()
 ```c
 
 ```
-## 
+## UVA10922：2 the 9s 
 ```c
-
+#include <stdio.h>
+#include <string.h>
+int degree(char *str){
+	int m,d=0;
+	if(strlen(str)==1 && str[0]=='9'){
+		return 1;
+	}
+	
+	while(strlen(str)>=2){
+		m=0;
+		for(int i=0;i<strlen(str);i++){
+			m=m+str[i]-'0';//因為是字串改成數字
+		}
+		if(m%9==0){
+			d++;
+		}
+		sprintf(str,"%d",m); //將數值放進字串中
+	}
+	return d;
+}
+int main()
+{
+	char n[1001]={0};
+	while(scanf("%s",n)){
+		if(n[0]=='0' && strlen(n)==1){
+			break;
+		}
+		else{
+			printf("%s ",n);
+			
+			int d=degree(n);
+			
+			if(d){
+				printf("is a multiple of 9 and has 9-degree %d.",d);
+			}
+			else{
+				printf("is not a multiple of 9.");
+			}
+			printf("\n");
+		}
+		memset(n,0,sizeof(n)); //把陣列的值變成0
+	}
+}
 ```
 ## 
 ```c
