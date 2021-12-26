@@ -1445,5 +1445,33 @@ int main()
 ```
 ## UVA12602：Nice Licence Plates
 ```c
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+	int n,pa,pn;
+	char str[10];
+	scanf("%d",&n);
+	while(n--){
+		scanf("%s",str);
+		pa=0;
+		for(int i=0;i<3;i++){
+			pa += (str[i]-65)*pow(26,2-i);
+		}
+		pn=0;
+		for(int i=4;i<=7;i++)
+		{
+			pn+=(str[i]-48)*(int)pow(10,7-i);
+		}
+		int ans;
+		ans=abs(pn-pa);
+		if(ans<=100){
+			printf("nice\n");
+		}
+		else{
+			printf("not nice\n");
+		}
+	}
+}
 ```
