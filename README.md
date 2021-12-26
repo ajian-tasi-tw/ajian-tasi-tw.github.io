@@ -1341,8 +1341,56 @@ int main()
 	}
 }
 ```
-## 
+## UVA10235：Simply Emirp 
 ```c
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int prime(int n){
+	int a=1;
+	for(int i=2;i*i<=n;i++){
+		if(n%i==0){
+			a=0;
+		}
+	}
+	return a;
+}
+int main()
+{
+	int n,a1=0,a2=0,b;
+	while(scanf("%d",&n)!=EOF){
+		int m=0;
+		b=n;
+		a1=prime(n);
+		while(n){
+			m=m*10+n%10;
+			n/=10;
+		}
+		a2=prime(m);
+		
+		if(b==m){
+			if(a1==1){
+				printf("%d is prime.\n",b);
+			}
+			else{
+				printf("%d is not prime.\n",b);
+			}
+		}
+		else{
+			if(a1==1){
+				if(a2==1){
+					printf("%d is emirp.\n",b);
+				}
+				else{
+					printf("%d is prime.\n",b);
+				}
+			}
+			else{
+				printf("%d is not prime.\n",b);
+			}
+		}
+	}
+}
 
 ```
 ## UVA10922：2 the 9s 
@@ -1391,11 +1439,11 @@ int main()
 	}
 }
 ```
-## 
+## UVA10931：Parity 
 ```c
 
 ```
-## 
+## UVA12602：Nice Licence Plates
 ```c
 
 ```
