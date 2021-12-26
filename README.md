@@ -1295,6 +1295,46 @@ int main()
 ```
 ## UVA11349：Symmetric Matrix 
 ```c
+#include <stdio.h>
+int main()
+{
+	int n,m;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		char s[3];		
+		scanf("%s %s %d",s,s,&m);
+		int a[m*m],ans=1;
+		for(int k=0;k<m*m;k++){
+			scanf("%d",&a[k]);
+		}
+		for(int k=0;k<m*m;k++){
+			if(a[k]<0){
+				ans=2;
+				break;
+			}
+			else{
+				for(int k=0;k<(m*m)/2;k++){				
+					if(a[k]!=a[(m*m)-1-k]){
+						ans=0;
+						break;
+					}
+				}
+			}		
+		}
+		
+		
+		
+		if(ans==1){
+			printf("Test #%d: Symmetric.\n",i+1);
+		}
+		else if(ans==2){
+			printf("Test #%d: Non-symmetric.\n",i+1);
+		}
+		else{
+			printf("Test #%d: Non-symmetric.\n",i+1);		
+		}
+	}
+}
 
 ```
 ## 第14周
