@@ -1515,3 +1515,49 @@ int main()
 	}
 }
 ```
+## 16周
+## UVA10038：Jolly Jumpers 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int cmp(const void *a,const void *b){
+	return *(int *)a-*(int *)b;
+}
+int main()
+{
+	int n;
+	while(scanf("%d", &n)!=EOF){
+		int a[n];
+		for(int i=0;i<n;i++){
+			scanf("%d",&a[i]);
+		}
+		
+		int d[n-1];
+		for(int i=0;i<n-1;i++){
+			d[i]=abs(a[i+1]-a[i]);
+		}
+		
+		qsort(d,n-1,sizeof(int),cmp);
+		
+		for(int i=0;i<n-2;i++){
+			if(d[i+1]-d[i]!=1){
+				printf("Not jolly\n");
+			}
+		}
+		printf("Jolly\n");
+		
+	}
+}
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
+## 
+```c
+
+```
