@@ -1527,37 +1527,158 @@ int main()
 {
 	int n;
 	while(scanf("%d", &n)!=EOF){
-		int a[n];
+		int a[n],c=1;
 		for(int i=0;i<n;i++){
 			scanf("%d",&a[i]);
 		}
-		
-		int d[n-1];
-		for(int i=0;i<n-1;i++){
-			d[i]=abs(a[i+1]-a[i]);
-		}
-		
-		qsort(d,n-1,sizeof(int),cmp);
-		
-		for(int i=0;i<n-2;i++){
-			if(d[i+1]-d[i]!=1){
+		if(n==2){
+			if(abs(a[1]-a[0])==1){
+				printf("Jolly\n");
+			}
+			else{
 				printf("Not jolly\n");
 			}
 		}
-		printf("Jolly\n");
-		
+		else{
+			int d[n-1];
+			for(int i=0;i<n-1;i++){
+				d[i]=abs(a[i+1]-a[i]);
+			}
+			
+			qsort(d,n-1,sizeof(int),cmp);
+			
+			for(int i=0;i<n-2;i++){
+				if(d[i+1]-d[i]!=1 || d[i+1]-d[i]<=0){
+					printf("Not jolly\n");
+					c=0;
+					break;
+				}
+			}
+			if(c==1)printf("Jolly\n");
+		}
 	}
 }
-```
-## 
-```c
 
 ```
-## 
+## UVA10101：Bangla Numbers 
 ```c
-
+#include <stdio.h>
+void check(long long n){
+	if(n/10000000!=0){
+		check(n/10000000);
+		printf(" %s","kuti");
+		n=n%10000000;
+	}
+	if(n/100000!=0){
+		check(n/100000);
+		printf(" %s","lakh");
+		n=n%100000;
+	}
+	if(n/1000!=0){
+		check(n/1000);
+		printf(" %s","hajar");
+		n=n%1000;
+	}
+	if(n/100!=0){
+		check(n/100);
+		printf(" %s","shata");
+		n=n%100;
+	}
+	if(n!=0){
+		printf(" %d",n);
+	}
+}
+int main()
+{
+  long long num;
+  int x= 1;
+  while(scanf("%lld",&num)!=EOF)
+  {
+  	printf("%4d.",x);
+  	if(num==0)printf(" %d",num);
+  	else check(num);
+  	
+  	printf("\n");
+  	x++;
+  }
+}
 ```
-## 
+## UVA10189：Minesweeper 
 ```c
-
+#include <stdio.h>
+int main()
+{
+	int n,m,o=0;
+	scanf("%d%d",&n,&m);
+	while(m!=0 && n!=0){
+		char mine[n][m+1];
+		char minec[n][m+1];
+		
+		for(int a=0;a<n;a++){
+			scanf("%s",mine[a]);
+		}
+		for(int c=0;c<n;c++){
+			for(int b=0;b<m+1;b++)
+				minec[c][b]='\0';
+		}
+		
+		int sum=0,i,j;
+		for( i=0;i<n;i++){
+			for( j=0;j<m;j++){
+				if(mine[i][j]=='*'){
+					minec[i][j]='*';
+					continue;
+				}
+				else{
+				sum=0;
+				for(int y=i-1;y<=i+1;y++){
+					for(int x=j-1;x<=j+1;x++){
+						if((x>=0 && y>=0) && (x<m && y<n) && !(x==j && y==i)){
+							if(mine[y][x]=='*')
+								sum++;
+						}
+					}
+				}
+					minec[i][j]=sum+'0';
+				}	
+			}
+			
+		}
+		if(o>0) printf("\n");
+		printf("Field #%d:\n",++o);
+		for(int i=0;i<n;i++){
+			printf("%s\n",minec[i]);
+		}
+		
+		scanf("%d%d",&n,&m);
+ }
+}
+```
+## UVA299：Train Swapping 
+```c
+#include <stdio.h>
+int main()
+{
+	int n,m;
+	scanf("%d",&n);
+	while(n--){
+		scanf("%d",&m);
+		int a[m],temp,p=0;
+		for(int i=0;i<m;i++){
+			scanf("%d",&a[i]);
+		}
+	
+		for(int i=0;i<m;i++){
+			for(int j=0;j<m-1-i;j++){
+				if(a[j]>a[j+1]){
+					temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;
+					p++;
+				}
+			}
+		}
+		printf("Optimal train swapping takes %d swaps.\n",p);
+	}
+}
 ```
