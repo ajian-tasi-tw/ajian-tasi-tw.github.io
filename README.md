@@ -13,7 +13,7 @@ int main()
 ```
 ## 大二 資料結構實務
 ## 第三周
-## UVA10783 odd sum
+## UVA10783 odd sum ●○○○○
 ```c
 #include <stdio.h>
 int main()
@@ -32,7 +32,7 @@ int main()
 	}
 }
 ```
-## (UVA100) The 3n + 1 problem :
+## (UVA100) The 3n + 1 problem : 
 ```c
 // 方法一
 int cycleLength(int n){
@@ -114,7 +114,7 @@ int main(void)
 	}
 }
 ```
-## UVA11417：GCD 
+## UVA11417：GCD ●○○○○
 ```c
 #include <stdio.h>
 int GCD(int i, int j){
@@ -223,7 +223,7 @@ int main()
 	}
 }
 ```
-## 第3題 UVA10071：Back to High School Physics 
+## 第3題：Back to High School Physics ●○○○○
 ```c
 #include <stdio.h>
 int main()
@@ -234,7 +234,7 @@ int main()
 	}	
 }
 ```
-## 第4題 UVA10055：Hashmat the brave warrior 
+## 第4題 UVA10055：Hashmat the brave warrior  ●○○○○
 ```c
 #include <stdio.h>
 int main()
@@ -250,7 +250,7 @@ int main()
 	}
 }
 ```
-## 第5題 UVA10035：Primary Arithmetic 
+## 第5題 UVA10035：Primary Arithmetic  ●○○○○
 ```c 
 //老師解法
 int main()
@@ -343,7 +343,7 @@ int main()
 } 
 ```
 
-## UVA10812：Beat the Spread!
+## UVA10812：Beat the Spread! ●○○○○
 ```C
 #include <stdio.h>
 int main()
@@ -405,7 +405,7 @@ int main()
 	}
 }
 ```
-## UVA11764：Jumping Mario 
+## UVA11764：Jumping Mario ●○○○○
 ```C
 #include <stdio.h>
 int b[100];
@@ -654,7 +654,7 @@ int main()
 	}
 }
 ```
-## UVA272：TeX Quotes 
+## UVA272：TeX Quotes ●○○○○
 ```C
 #include <stdio.h>
 int main()
@@ -1187,7 +1187,7 @@ int main()
 ```
 
 ## 第14周
-## UVA10056：What is the Probability?
+## UVA10056：What is the Probability? 
 ```c
 #include <stdio.h>
 #include <math.h>
@@ -1654,7 +1654,7 @@ int main()
  }
 }
 ```
-## UVA299：Train Swapping 
+## UVA299：Train Swapping ●○○○○
 ```c
 #include <stdio.h>
 int main()
