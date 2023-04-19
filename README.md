@@ -3,7 +3,7 @@
 *我是阿尖*
 
 ![車車好好看XD](https://i.ytimg.com/vi/_6TtTRrno3E/maxresdefault.jpg)
-
+![Dream team](https://twitter.com/Ajian_0313/status/1411345563598032899/photo/1)
 ```C
 #include <stdio.h>
 int main()
